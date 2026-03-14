@@ -1,0 +1,38 @@
+library (PROBE) {
+  cell (AND2_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "AND2_X1";
+  }
+  cell (AOI21_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "AOI21_X1";
+  }
+  cell (AOI22_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "AOI22_X1";
+  }
+  cell (LHQ_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.0648;
+    cell_footprint : "LHQ_X1";
+  }
+  cell (MUX2_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "MUX2_X1";
+  }
+  cell (OAI21_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "OAI21_X1";
+  }
+  cell (OAI22_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "OAI22_X1";
+  }
+  cell (OR2_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "OR2_X1";
+  }
+  cell (XOR2_X1_6T_2F_45CPP_24M0P_27M1P_OF18_24M2P_2MPO_ET_M0) {
+    area : 0.03888;
+    cell_footprint : "XOR2_X1";
+  }
+}

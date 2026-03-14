@@ -1,0 +1,1 @@
+../target_pnr_dir/gate/jpeg_encoder.sdc

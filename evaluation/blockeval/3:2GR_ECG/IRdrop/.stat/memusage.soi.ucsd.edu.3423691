@@ -1,0 +1,13 @@
+CMD: /home/tool/cadence/SSV211/tools.lnx86/ssvtools/bin/64bit/voltus_rail -nhbPort 56569 -procInfoHost soi.ucsd.edu:52463 -temp_directory_name /tmp/ssv_tmpdir_3422451_yuROdu -eps -clienttimeout 3600 -machine soi.ucsd.edu -port 44367 -hbPort -1 -id 1 
+CWD: /home/fetzfs_projects/PROBE3.0/SMT_CPP/AGR_Char/PROBE3.0/PostDesignEnablement/blockEval_J/45to30_MixedOffset_pnr_FC/IRdrop
+PID: 3423691
+Host: soi.ucsd.edu
+Number of CPU(s): 80
+System total memory: 256019MB
+date_time max RSS memory(MB) RSS memory(MB) virtual memory(MB) shared memory(MB)
+2025-12-15 2:9:23 54 54 3396 37
+2025-12-15 2:9:33 54 54 3396 37
+2025-12-15 2:9:43 55 55 3396 38
+2025-12-15 2:9:53 590 590 5203 48
+2025-12-15 2:10:3 591 591 5203 49
+end

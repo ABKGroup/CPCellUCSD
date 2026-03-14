@@ -1,0 +1,72 @@
+{
+    "PC" : {
+        "layer_type" : "metal",
+        "layer_number" : 7,
+        "layer_name" : "PC",
+        "direction" : "V",
+        "offset" : 0.0,
+        "pitch" : 45.0,
+        "width" : 16.0,
+        "info"  : "PC in layer"
+    },
+    "CA" : {
+        "layer_type" : "via",
+        "layer_number" : 14,
+        "layer_name" : "CA",
+        "upper_layer" : "M0",
+        "lower_layer" : "PC",
+        "vertical_enclosure" : 0.0,
+        "horizontal_enclosure" : 0.0,
+        "info"  : "CA in layer"
+    },
+    "M0" : {
+        "layer_type" : "metal",
+        "layer_number" : 15,
+        "layer_name" : "M0",
+        "direction" : "H",
+        "offset" : 0.0,
+        "pitch" : 24,
+        "width" : 14.0,
+        "info"  : "M0 in layer"
+    },
+    "V0" : {
+        "layer_type" : "via",
+        "layer_number" : 18,
+        "layer_name" : "V0",
+        "upper_layer" : "M1",
+        "lower_layer" : "M0",
+        "vertical_enclosure" : 0.0,
+        "horizontal_enclosure" : 0.0,
+        "info"  : "V0 in layer"
+    },
+    "M1" : {
+        "layer_type" : "metal",
+        "layer_number" : 19,
+        "layer_name" : "M1",
+        "direction" : "V",
+        "offset" : 9.0,
+        "pitch" : 27.0,
+        "width" : 14.0,
+        "info"  : "M1 in layer"
+    },
+    "V1" : {
+        "layer_type" : "via",
+        "layer_number" : 21,
+        "layer_name" : "V1",
+        "upper_layer" : "M2",
+        "lower_layer" : "M1",
+        "vertical_enclosure" : 0.0,
+        "horizontal_enclosure" : 0.0,
+        "info"  : "V1 in layer"
+    },
+    "M2" : {
+        "layer_type" : "metal",
+        "layer_number" : 20,
+        "layer_name" : "M2",
+        "direction" : "H",
+        "offset" : 0.0,
+        "pitch" : 24.0,
+        "width" : 14.0,
+        "info"  : "M2 in layer"
+    }
+}

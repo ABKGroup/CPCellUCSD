@@ -1,0 +1,7 @@
+absl-py
+klayout>=0.30
+matplotlib
+networkx
+numpy
+ortools>=9.14
+scikit-learn

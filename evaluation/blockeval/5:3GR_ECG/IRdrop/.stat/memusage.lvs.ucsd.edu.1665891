@@ -1,0 +1,13 @@
+CMD: /home/tool/cadence/SSV211/tools.lnx86/ssvtools/bin/64bit/voltus_rail -nhbPort 43063 -procInfoHost lvs.ucsd.edu:49185 -temp_directory_name /dev/shm/ssv_tmpdir_1663977_CX3t2p -eps -clienttimeout 3600 -machine lvs.ucsd.edu -port 34591 -hbPort -1 -id 1 
+CWD: /home/fetzfs_projects/PROBE3.0/SMT_CPP/AGR_Char/PROBE3.0/PostDesignEnablement/blockEval_J/45to27_MixedOffset_pnr_FC/IRdrop
+PID: 1665891
+Host: lvs.ucsd.edu
+Number of CPU(s): 72
+System total memory: 225037MB
+date_time max RSS memory(MB) RSS memory(MB) virtual memory(MB) shared memory(MB)
+2025-12-15 1:0:55 54 54 3024 37
+2025-12-15 1:1:5 54 54 3024 37
+2025-12-15 1:1:15 55 55 3024 38
+2025-12-15 1:1:25 585 585 4707 47
+2025-12-15 1:1:35 586 586 4707 49
+end
