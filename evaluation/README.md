@@ -29,6 +29,11 @@ Flow scripts for library characterization are located in the *libgen* directory.
 - **Synopsys Library Compiler:** DB file generation (L-2016.06-SP3)
 
 ```bash
+# Step 0 — Signoff
+# Inputs: GDS, tech file (*.tf)
+# Outputs: pass/fail report
+make signoff
+
 # Step 1 — LVS and PEX
 # Inputs: GDS, CDL, and cell list
 # Outputs: RC-extracted spice netlists (*.sp)
