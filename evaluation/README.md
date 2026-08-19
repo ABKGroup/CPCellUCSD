@@ -5,19 +5,25 @@ This sub-repository provides the flows for standard cell characterization, place
 
 ```
 evaluation/
-├── libgen/                # Library characterization directories
-│   ├── 1:1GR/               # 1:1 GR (45nm:45nm) Libraries (No offset)
-│   ├── 3:2GR/               # 3:2 GR (45nm:30nm) Libraries (No offset)
-│   ├── 3:2GR_15offset/      # 3:2 GR (45nm:30nm) Libraries (15nm-offset)
-│   ├── 5:3GR/               # 5:3 GR (45nm:27nm) Libraries (No offset)
-│   ├── 5:3GR_9offset/       # 5:3 GR (45nm:27nm) Libraries (9nm-offset)
-│   └── 5:3GR_18offset/      # 5:3 GR (45nm:27nm) Libraries (18nm-offset)
-├── blockeval/             # Place-and-Route and IR-drop evaluation flows
-│   ├── 1:1GR/               # 1:1 GR flows / no-offset only
-│   ├── 3:2GR/               # 3:2 GR flows / no-offset only
-│   ├── 3:2GR_ECG/           # 3:2 GR flows / Equivalent Cell Group
-│   ├── 5:3GR/               # 5:3 GR flows / no-offset only
-└── └── 5:3GR_ECG/           # 5:3 GR flows / Equivalent Cell Group
+├── libgen/                  # Library characterization directories
+│   ├── 1:1GR/                 # 1:1 GR (45nm:45nm) Libraries (No offset)
+│   ├── 3:2GR/                 # 3:2 GR (45nm:30nm) Libraries (No offset)
+│   ├── 3:2GR_15offset/        # 3:2 GR (45nm:30nm) Libraries (15nm-offset)
+│   ├── 5:3GR/                 # 5:3 GR (45nm:27nm) Libraries (No offset)
+│   ├── 5:3GR_9offset/         # 5:3 GR (45nm:27nm) Libraries (9nm-offset)
+│   ├── 5:3GR_18offset/        # 5:3 GR (45nm:27nm) Libraries (18nm-offset)
+│   └── 2:1GR/                 # 2:1 GR (45nm:22.5nm) Libraries (No offset)
+├── blockeval/               # Place-and-Route and IR-drop evaluation flows
+│   ├── design/                 # Shared RTL for block-level benchmarks
+│   │   ├── jpeg_encoder/         # OpenCores JPEG Encoder
+│   │   └── aes_cipher_top/       # OpenCores AES
+│   ├── 1:1GR/                 # 1:1 GR flows / no-offset only
+│   ├── 3:2GR/                 # 3:2 GR flows / no-offset only
+│   ├── 3:2GR_ECG/             # 3:2 GR flows / Equivalent Cell Group
+│   ├── 5:3GR/                 # 5:3 GR flows / no-offset only
+│   ├── 5:3GR_ECG/             # 5:3 GR flows / Equivalent Cell Group
+│   └── 2:1GR/                 # 2:1 GR flows / no-offset only
+└── results/                 # Reported PPA results (tables, generated figures)
 ```
 
 ## Library Characterization 
