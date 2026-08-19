@@ -1,0 +1,162 @@
+library (PROBE) {
+  cell (DFFHQN_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.09072;
+    cell_footprint : "DFFHQN";
+  }
+  cell (INV_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.01296;
+    cell_footprint : "INV";
+  }
+  cell (INV_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.01944;
+    cell_footprint : "INV";
+  }
+  cell (INV_X4_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "INV";
+  }
+  cell (INV_X8_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.05832;
+    cell_footprint : "INV";
+  }
+  cell (AND2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "AND2";
+  }
+  cell (AND3_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "AND3";
+  }
+  cell (OR2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "OR2";
+  }
+  cell (OR3_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "OR3";
+  }
+  cell (OR2_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "OR2";
+  }
+  cell (OR3_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.03888;
+    cell_footprint : "OR3";
+  }
+  cell (AND3_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.03888;
+    cell_footprint : "AND3";
+  }
+  cell (NAND2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.01944;
+    cell_footprint : "NAND2";
+  }
+  cell (NAND3_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "NAND3";
+  }
+  cell (NAND4_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "NAND4";
+  }
+  cell (NOR2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.01944;
+    cell_footprint : "NOR2";
+  }
+  cell (NOR3_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "NOR3";
+  }
+  cell (NOR4_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "NOR4";
+  }
+  cell (XOR2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.03888;
+    cell_footprint : "XOR2";
+  }
+  cell (MUX2_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "MUX2";
+  }
+  cell (BUF_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.01944;
+    cell_footprint : "BUF";
+  }
+  cell (BUF_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "BUF";
+  }
+  cell (BUF_X4_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "BUF";
+  }
+  cell (BUF_X8_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.08424;
+    cell_footprint : "BUF";
+  }
+  cell (NAND2_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "NAND2";
+  }
+  cell (NAND4_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.05832;
+    cell_footprint : "NAND4";
+  }
+  cell (NOR2_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "NOR2";
+  }
+  cell (NOR3_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "NOR3";
+  }
+  cell (NOR4_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.05832;
+    cell_footprint : "NOR4";
+  }
+  cell (AOI21_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "AOI21";
+  }
+  cell (OAI21_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.02592;
+    cell_footprint : "OAI21";
+  }
+  cell (AOI22_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "AOI22";
+  }
+  cell (OAI22_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "OAI22";
+  }
+  cell (AOI21_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "AOI21";
+  }
+  cell (OAI21_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "OAI21";
+  }
+  cell (AOI22_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0648;
+    cell_footprint : "AOI22";
+  }
+  cell (OAI22_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0648;
+    cell_footprint : "OAI22";
+  }
+  cell (LHQ_X1_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0648;
+    cell_footprint : "LHQ";
+  }
+  cell (AND2_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.0324;
+    cell_footprint : "AND2";
+  }
+  cell (NAND3_X2_6T_2F_45CPP_24M0P_22p5M1P_OF0_24M2P_2MPO_ET_M0) {
+    area : 0.04536;
+    cell_footprint : "NAND3";
+  }
+}
