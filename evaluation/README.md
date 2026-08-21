@@ -271,9 +271,46 @@ library the netlist happens to be routed under.
 </tr>
 </table>
 
-## Additional Block-Level Benchmark
+## Additional Block-Level Benchmark (AES)
 The Advanced Encryption Standard (AES) is also available as a block-level
 benchmark, alongside the JPEG Encoder used above.
+
+### 1:1 GR
+
+| Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| #Insts | | | | | | | | |
+| Wirelength (μm) | | | | | | | | |
+| Total Power (mW) | | | | | | | | |
+| Worst Negative Slack (ns) | | | | | | | | |
+| Effective CLKP (ns) | | | | | | | | |
+| Area (μm²) | | | | | | | | |
+
+### 3:2 GR — 0-offset Only
+
+| Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| #Insts | | | | | | | | |
+| Wirelength (μm) | | | | | | | | |
+| Total Power (mW) | | | | | | | | |
+| Worst Negative Slack (ns) | | | | | | | | |
+| Effective CLKP (ns) | | | | | | | | |
+| Area (μm²) | | | | | | | | |
+
+### 3:2 GR — Mixed-offset
+
+| Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| #Insts | | | | | | | | |
+| Wirelength (μm) | | | | | | | | |
+| Total Power (mW) | | | | | | | | |
+| Worst Negative Slack (ns) | | | | | | | | |
+| Effective CLKP (ns) | | | | | | | | |
+| Area (μm²) | | | | | | | | |
+
+## Additional Block-Level Benchmark (CV32E40P)
+CV32E40P is also available as a block-level
+benchmark, alongside the AES and JPEG Encoder used above.
 
 ### 1:1 GR
 
@@ -311,5 +348,6 @@ benchmark, alongside the JPEG Encoder used above.
 # Knowledge Reference
 - OpenCores JPEG Encoder. \[[Link](https://opencores.org/projects/mkjpeg)\]
 - OpenCores AES. \[[Link](https://opencores.org/projects/aes_core)\]
+- CORE-V CV32E40P. \[[Link](https://docs.openhwgroup.org/projects/cv32e40p-user-manual/en/cv32e40p_v1.2.1/)\]
 - Cadence Pegasus, Quantus and Voltus. \[[Link](https://cadence.com)\]
 - Synopsys Design Compiler, IC Compiler II. \[[Link](https://synopsys.com)\]
