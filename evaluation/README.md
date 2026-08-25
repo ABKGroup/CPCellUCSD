@@ -200,6 +200,10 @@ library the netlist happens to be routed under.
 
 (Note: Every 3:2 entry below uses the 0-offset-only library variant.)
 
+For each pair of rows that shares a synthesis library and TCP (so the two
+rows use the same synthesized netlist), the **bold** value marks the better
+PnR library choice on that metric.
+
 <table>
 <tr>
   <th>TCP (ns)</th>
@@ -216,58 +220,58 @@ library the netlist happens to be routed under.
   <td rowspan="4" align="center">0.1</td>
   <td rowspan="2" align="center">1:1</td>
   <td align="center">1:1</td>
-  <td></td><td>91637</td><td>29.5</td><td>-0.011</td><td>0.111</td><td>2296</td>
+  <td>28619</td><td>91637</td><td><strong>29.5</strong></td><td>-0.011</td><td>0.111</td><td>2296</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>28619</td><td><strong>84058</strong></td><td>29.8</td><td><strong>-0.010</strong></td><td><strong>0.110</strong></td><td><strong>1951</strong></td>
 </tr>
 <tr>
   <td rowspan="2" align="center">3:2</td>
   <td align="center">1:1</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>14756</td><td>82550</td><td><strong>28</strong></td><td>0</td><td><strong>0.100</strong></td><td>2214</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td>73759</td><td>28.4</td><td>0.008</td><td>0.108</td><td>1898</td>
+  <td>14756</td><td><strong>73759</strong></td><td>28.4</td><td><strong>0.008</strong></td><td>0.108</td><td><strong>1898</strong></td>
 </tr>
 <tr>
   <td rowspan="4" align="center">0.25</td>
   <td rowspan="2" align="center">1:1</td>
   <td align="center">1:1</td>
-  <td></td><td>69993</td><td>10.4</td><td>0.014</td><td>0.236</td><td>1878</td>
+  <td>17757</td><td>69993</td><td><strong>10.4</strong></td><td><strong>0.014</strong></td><td><strong>0.236</strong></td><td>1878</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>17757</td><td><strong>64920</strong></td><td>10.5</td><td>0.010</td><td>0.240</td><td><strong>1624</strong></td>
 </tr>
 <tr>
   <td rowspan="2" align="center">3:2</td>
   <td align="center">1:1</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>11106</td><td>106199</td><td>11.9</td><td>-0.170</td><td>0.420</td><td>1886</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td>65940</td><td>10.8</td><td>0.004</td><td>0.246</td><td>1680</td>
+  <td>11106</td><td><strong>65940</strong></td><td><strong>10.8</strong></td><td><strong>0.004</strong></td><td><strong>0.246</strong></td><td><strong>1680</strong></td>
 </tr>
 <tr>
   <td rowspan="4" align="center">0.4</td>
   <td rowspan="2" align="center">1:1</td>
   <td align="center">1:1</td>
-  <td></td><td>65480</td><td>6.7</td><td>0.041</td><td>0.359</td><td>1912</td>
+  <td>18794</td><td>65480</td><td><strong>6.7</strong></td><td>0.041</td><td>0.359</td><td>1912</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>18794</td><td><strong>59755</strong></td><td>6.8</td><td><strong>0.060</strong></td><td><strong>0.340</strong></td><td><strong>1656</strong></td>
 </tr>
 <tr>
   <td rowspan="2" align="center">3:2</td>
   <td align="center">1:1</td>
-  <td></td><td></td><td></td><td></td><td></td><td></td>
+  <td>11260</td><td>73969</td><td>7.09</td><td><strong>0.050</strong></td><td><strong>0.350</strong></td><td>1890</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td></td><td>62488</td><td>6.8</td><td>0.030</td><td>0.370</td><td>1690</td>
+  <td>11260</td><td><strong>62488</strong></td><td><strong>6.8</strong></td><td>0.030</td><td>0.370</td><td><strong>1690</strong></td>
 </tr>
 </table>
 
