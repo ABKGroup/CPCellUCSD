@@ -138,7 +138,7 @@ These extend the paper's Fig. 19 with the 2:1 GR series added, generated from
 | #Insts | 57919 | 54403 | 52951 | 47918 | 46307 | 45677 | 45319 | 45253 |
 | Wirelength (μm) | 73759 | 71986 | 71602 | 72681 | 65940 | 63185 | 63707 | 62488 |
 | Total Power (mW) | 28.4 | 23.3 | 18.4 | 13.7 | 10.8 | 9.0 | 7.7 | 6.8 |
-| Worst Negative Slack (ns) | 0.008 | -0.004 | -0.001 | 0.001 | 0.004 | 0.014 | 0.019 | 0.030 |
+| Worst Negative Slack (ns) | -0.008 | -0.004 | -0.001 | 0.001 | 0.004 | 0.014 | 0.019 | 0.030 |
 | Effective CLKP (ns) | 0.108 | 0.124 | 0.151 | 0.199 | 0.246 | 0.286 | 0.331 | 0.370 |
 | Area (μm²) | 1898 | 1826 | 1777 | 1726 | 1680 | 1703 | 1659 | 1690 |
 
@@ -229,11 +229,11 @@ PnR library choice on that metric.
 <tr>
   <td rowspan="2" align="center">3:2</td>
   <td align="center">1:1</td>
-  <td>14756</td><td>82550</td><td><strong>28</strong></td><td>0</td><td><strong>0.100</strong></td><td>2214</td>
+  <td>14756</td><td>82550</td><td><strong>28</strong></td><td><strong>0</strong></td><td><strong>0.100</strong></td><td>2214</td>
 </tr>
 <tr>
   <td align="center">3:2</td>
-  <td>14756</td><td><strong>73759</strong></td><td>28.4</td><td><strong>0.008</strong></td><td>0.108</td><td><strong>1898</strong></td>
+  <td>14756</td><td><strong>73759</strong></td><td>28.4</td><td>-0.008</td><td>0.108</td><td><strong>1898</strong></td>
 </tr>
 <tr>
   <td rowspan="4" align="center">0.25</td>
@@ -283,34 +283,34 @@ benchmark, alongside the JPEG Encoder used above.
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 11403 | 11036 | 10698 | 10200 | 10194 | 10199 | 10185 | 10184 |
+| Wirelength (μm) | 30514 | 29937 | 29225 | 27459 | 27463 | 27599 | 27587 | 27774 |
+| Total Power (mW) | 8.6 | 6.8 | 5.1 | 3.6 | 2.9 | 2.4 | 2.1 | 1.9 |
+| Worst Negative Slack (ns) | -0.039 | -0.026 | -0.003 | 0.006 | 0.041 | 0.084 | 0.138 | 0.188 |
+| Effective CLKP (ns) | 0.139 | 0.146 | 0.153 | 0.194 | 0.209 | 0.217 | 0.212 | 0.213 |
+| Area (μm²) | 428 | 417 | 399 | 377 | 377 | 377 | 377 | 375 |
 
 ### 3:2 GR — 0-offset Only
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 11833 | 11531 | 11149 | 10580 | 10565 | 10553 | 10561 | 10559 |
+| Wirelength (μm) | 29071 | 27217 | 26239 | 24702 | 24626 | 24429 | 24715 | 24488 |
+| Total Power (mW) | 8.2 | 6.6 | 5.0 | 3.6 | 2.8 | 2.4 | 2.1 | 1.8 |
+| Worst Negative Slack (ns) | -0.070 | -0.023 | -0.003 | 0.003 | 0.031 | 0.091 | 0.135 | 0.183 |
+| Effective CLKP (ns) | 0.170 | 0.143 | 0.153 | 0.198 | 0.220 | 0.209 | 0.216 | 0.217 |
+| Area (μm²) | 371 | 366 | 343 | 311 | 313 | 313 | 313 | 313 |
 
 ### 3:2 GR — Mixed-offset
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 11590 | 11507 | 11095 | 10576 | 10562 | 10578 | 10578 | 10557 |
+| Wirelength (μm) | 27825 | 27130 | 26810 | 24930 | 25051 | 24656 | 25092 | 24661 |
+| Total Power (mW) | 8.3 | 6.7 | 5.1 | 3.6 | 2.9 | 2.4 | 2.1 | 1.9 |
+| Worst Negative Slack (ns) | -0.049 | -0.029 | -0.012 | 0.002 | 0.028 | 0.087 | 0.132 | 0.183 |
+| Effective CLKP (ns) | 0.149 | 0.149 | 0.162 | 0.198 | 0.222 | 0.213 | 0.219 | 0.217 |
+| Area (μm²) | 370 | 366 | 343 | 317 | 317 | 321 | 317 | 317 |
 
 ## Additional Block-Level Benchmark (CV32E40P)
 CV32E40P is also available as a block-level
@@ -320,34 +320,34 @@ benchmark, alongside the AES and JPEG Encoder used above.
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 44559 | 46561 | 47333 | 42784 | 38947 | 35246 | 32077 | 31584 |
+| Wirelength (μm) | 123513 | 127678 | 133711 | 118789 | 111089 | 103743 | 100399 | 99035 |
+| Total Power (mW) | 14.3 | 12.5 | 10.0 | 7.0 | 5.5 | 4.3 | 3.7 | 3.3 |
+| Worst Negative Slack (ns) | -0.240 | -0.166 | -0.180 | -0.102 | -0.064 | -0.049 | -0.045 | -0.033 |
+| Effective CLKP (ns) | 0.340 | 0.286 | 0.330 | 0.302 | 0.314 | 0.349 | 0.395 | 0.433 |
+| Area (μm²) | 1648 | 1718 | 1740 | 1612 | 1499 | 1431 | 1377 | 1316 |
 
 ### 3:2 GR — 0-offset Only
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 45069 | 45435 | 48003 | 42391 | 38415 | 35783 | 32749 | 31917 |
+| Wirelength (μm) | 112159 | 117463 | 121595 | 106806 | 97637 | 93494 | 91013 | 88701 |
+| Total Power (mW) | 14.1 | 12.6 | 9.9 | 6.8 | 5.3 | 4.3 | 3.7 | 3.2 |
+| Worst Negative Slack (ns) | -0.204 | -0.170 | -0.175 | -0.086 | -0.057 | -0.062 | -0.062 | -0.022 |
+| Effective CLKP (ns) | 0.304 | 0.290 | 0.325 | 0.286 | 0.307 | 0.362 | 0.412 | 0.422 |
+| Area (μm²) | 1495 | 1474 | 1544 | 1386 | 1304 | 1231 | 1191 | 1151 |
 
 ### 3:2 GR — Mixed-offset
 
 | Metric | 0.10 | 0.12 | 0.15 | 0.20 | 0.25 | 0.30 | 0.35 | 0.40 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| #Insts | | | | | | | | |
-| Wirelength (μm) | | | | | | | | |
-| Total Power (mW) | | | | | | | | |
-| Worst Negative Slack (ns) | | | | | | | | |
-| Effective CLKP (ns) | | | | | | | | |
-| Area (μm²) | | | | | | | | |
+| #Insts | 42214 | 41858 | 42287 | 39162 | 36725 | 34967 | 31821 | 30956 |
+| Wirelength (μm) | 107432 | 108416 | 107855 | 101144 | 95881 | 93596 | 91436 | 90185 |
+| Total Power (mW) | 14.0 | 12.2 | 9.5 | 7.1 | 5.3 | 4.5 | 3.8 | 3.2 |
+| Worst Negative Slack (ns) | -0.217 | -0.193 | -0.145 | -0.111 | -0.090 | -0.091 | -0.119 | -0.072 |
+| Effective CLKP (ns) | 0.317 | 0.313 | 0.295 | 0.311 | 0.340 | 0.391 | 0.469 | 0.472 |
+| Area (μm²) | 1376 | 1357 | 1369 | 1291 | 1231 | 1202 | 1151 | 1140 |
 
 # Knowledge Reference
 - OpenCores JPEG Encoder. \[[Link](https://opencores.org/projects/mkjpeg)\]
