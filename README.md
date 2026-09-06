@@ -6,6 +6,11 @@ The layout generation flow is shown in the below flow chart.
 | <img src="figure/CPCellFlow.png" width=800px> |
 |:--:|
 
+## What's New
+- Added the CV32E40P core as a third block-level benchmark, alongside the AES and JPEG Encoder.
+- Added the Fixed Netlist/Independent Netlist Ablation Study, which checks whether synthesizing and routing a design under different gear-ratio libraries changes the resulting PPA. See [Fixed Netlist/Independent Netlist Ablation Study](evaluation/README.md#fixed-netlistindependent-netlist-ablation-study).
+- Added the 2:1 GR (gear ratio) setting to the PPA sweep. See [Power, Performance and Area Under Different Gear Ratio Settings](evaluation/README.md#power-performance-and-area-under-different-gear-ratio-settings).
+- Added PPA results for the AES and CV32E40P block-level benchmarks. See [Additional Block-Level Benchmark (AES)](evaluation/README.md#additional-block-level-benchmark-aes) and [Additional Block-Level Benchmark (CV32E40P)](evaluation/README.md#additional-block-level-benchmark-cv32e40p).
 
 # Run Guide
 
