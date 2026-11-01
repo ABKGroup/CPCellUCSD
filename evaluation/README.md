@@ -191,6 +191,31 @@ These extend the paper's Fig. 19 with the 2:1 GR series added, generated from
 | Effective CLKP (ns) | 0.105 | 0.130 | 0.150 | 0.190 | 0.230 | 0.280 | 0.320 | 0.350 |
 | Area (μm²) | 1974 | 1826 | 1701 | 1646 | 1610 | 1599 | 1601 | 1601 |
 
+## Evaluation Method & Examples
+For 1:1 GR, 3:2 GR and 5:3 GR (0-offset and mixed-offset), each target clock period (TCP)
+has five P&R runs (TCP, TCP ±0.1 ps, TCP ±0.2 ps) at every utilization of a sweep.
+For each of these TCPs, Table IX reports the per-metric median of the five runs at one
+reported utilization. Per-run data: `results/table_ix_runs/`.
+
+| Configuration | Median #DRV at reported utilization (range over TCPs) |
+|---|---:|
+| 1:1 GR | 209–307 |
+| 3:2 GR — 0-offset Only | 0 |
+| 3:2 GR — Mixed-offset | 0 |
+| 5:3 GR — 0-offset Only | 271–427 |
+| 5:3 GR — Mixed-offset | 229–348 |
+
+### Example: 1:1 GR at 0.10 ns (reported utilization 0.91)
+
+| Run TCP (ns) | #Insts | Wirelength (μm) | Total Power (mW) | Worst Negative Slack (ns) | Effective CLKP (ns) | Area (μm²) | #DRV |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 0.0998 | 59024 | 92435 | 30.5 | -0.007 | 0.107 | 2296 | 243 |
+| 0.0999 | 58862 | 90957 | 29.4 | -0.013 | 0.113 | 2296 | 179 |
+| 0.1000 | 61403 | 93106 | 30.1 | -0.011 | 0.111 | 2296 | 324 |
+| 0.1001 | 59472 | 91243 | 29.4 | -0.011 | 0.111 | 2296 | 153 |
+| 0.1002 | 59679 | 91637 | 29.5 | -0.006 | 0.106 | 2296 | 210 |
+| **Table IX** | 59472 | 91637 | 29.5 | -0.011 | 0.111 | 2296 | — |
+
 ## Fixed Netlist/Independent Netlist Ablation Study
 A **fixed netlist** is synthesized once under one GR library, then reused for
 place-and-route under a *different* GR library.
