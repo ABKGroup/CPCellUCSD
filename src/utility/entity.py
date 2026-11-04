@@ -5,6 +5,8 @@ import networkx as nx
 from typing import Union
 from enum import Enum
 import copy
+import re
+from decimal import Decimal, InvalidOperation
 # custom
 import src.utility.config as config
 
@@ -17,6 +19,37 @@ logging.basicConfig(format="[%(levelname)s] %(asctime)s - %(message)s", level=lo
 class Model(Enum):
     PMOS = "pmos"
     NMOS = "nmos"
+
+    @classmethod
+    def resolve(cls, name, model_map=None):
+        """Resolve explicit mappings or unambiguous MOS model-name tokens."""
+        if isinstance(name, cls):
+            return name
+        normalized = str(name).lower()
+        mapping = {key.lower(): value for key, value in (model_map or {}).items()}
+        if normalized in mapping:
+            value = mapping[normalized]
+            return value if isinstance(value, cls) else cls(str(value).lower())
+        tokens = set(re.split(r"[^a-z0-9]+", normalized))
+        matches = set()
+        if tokens & {"n", "nmos", "nfet"}:
+            matches.add(cls.NMOS)
+        if tokens & {"p", "pmos", "pfet"}:
+            matches.add(cls.PMOS)
+        if len(matches) != 1:
+            raise ValueError(f"Unknown or ambiguous transistor model {name!r}; provide an explicit model_map")
+        return matches.pop()
+
+
+def _positive_integer(value, parameter):
+    """Read a literal integer without truncation, including SPICE's 1.0 form."""
+    try:
+        number = Decimal(str(value))
+    except InvalidOperation:
+        raise ValueError(f"{parameter} must be a positive integer; got {value!r}") from None
+    if not number.is_finite() or number <= 0 or number != number.to_integral_value():
+        raise ValueError(f"{parameter} must be a positive integer; got {value!r}")
+    return int(number)
 
 
 class PinType(Enum):
@@ -60,8 +93,7 @@ class Transistor:
         self.gate = gate
         self.drain = drain
         self.bulk = bulk
-        assert "p" in model or "n" in model, absl_logging.error("Model must be contain 'p' or 'n'.")
-        self.model = Model.PMOS if "p" in model else Model.NMOS
+        self.model = Model.resolve(model)
         self.w = w
         self.l = l
         self.nfin = nfin
@@ -194,7 +226,8 @@ class Net:
 class Circuit:
     """Circuit class to represent a circuit."""
 
-    def __init__(self):
+    def __init__(self, model_map=None):
+        self.model_map = dict(model_map or {})
         # Dictionary of net_name -> Net instance
         self.nets = {}
         # Dictionary of transistor name -> Transistor instance
@@ -425,13 +458,16 @@ class Circuit:
         if not name.startswith("M"):
             raise ValueError(f"A transistor name must start with M. Found transistor name {name} in subcircuit {self.subckt_name}")
         
-        # Convert nfin to integer if it's a string
-        nfin = int(nfin) if isinstance(nfin, str) else nfin
-        
-        # Calculate number of transistors to create (base unit is 2 fins)
-        num_copies = nfin // 2
-        if nfin % 2 != 0:
-            absl_logging.warning(f"nfin={nfin} is not divisible by 2 for transistor {name}. Rounding down.")
+        # Validate before modifying the circuit: the solver uses two-fin units.
+        nfin = _positive_integer(nfin, f"{name}.nfin")
+        if nfin % 2:
+            raise ValueError(f"{name}.nfin must be even for the two-fin solver; got {nfin}")
+        multiplicity = _positive_integer(1 if m is None else m, f"{name}.m")
+        for parameter, value in (("nf", nf), ("par", par)):
+            if _positive_integer(1 if value is None else value, f"{name}.{parameter}") != 1:
+                raise ValueError(f"{name}.{parameter} supports only 1; expand the netlist explicitly")
+        model = Model.resolve(model, self.model_map)
+        num_copies = (nfin // 2) * multiplicity
         
         # Find the starting suffix index
         suffix_idx = 0
@@ -450,7 +486,7 @@ class Circuit:
                 model=model,
                 w=w,
                 l=l,
-                m=m,
+                m=1,  # Multiplicity has already been expanded into devices.
                 nfin=2,  # Base unit is 2 fins
                 par=par,
                 p_la=p_la,

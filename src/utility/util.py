@@ -68,10 +68,14 @@ def parse_netlist(netlist_text, circuit):
         nfin = params.get("nfin")
 
         # Add the transistor to the circuit
-        circuit.add_transistor(t_name, source=source, gate=gate, drain=drain, bulk=bulk, model=model, w=w, l=l, nfin=nfin)
+        circuit.add_transistor(
+            t_name, source=source, gate=gate, drain=drain, bulk=bulk,
+            model=model, w=w, l=l, nfin=nfin,
+            m=params.get("m"), nf=params.get("nf"), par=params.get("par"),
+        )
 
 
-def read_cdl_file(filename):
+def read_cdl_file(filename, model_map=None):
     """
     Reads a CDL file and returns all circuit objects found in the file."""
     circuits = []
@@ -87,7 +91,7 @@ def read_cdl_file(filename):
         if flag_subckt:
             netlist_text += line + "\n"
         if line.startswith(".ENDS"):
-            new_circuit = Circuit()
+            new_circuit = Circuit(model_map=model_map)
             parse_netlist(netlist_text, new_circuit)
             circuits.append(new_circuit)
             netlist_text = ""
