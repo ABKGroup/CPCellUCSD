@@ -11,167 +11,38 @@ This module contains functions for enforcing various design rules including:
 from absl import logging as absl_logging
 
 
-def eol_rules_in_horizontal_layers(finfet_instance, eol_params):
-    """
-    Enforce EOL (End-of-Line) design rule checking for horizontal layers.
+def _eol_rules(finfet, eol_params, direction):
+    """Exclude only opposing wire ends strictly inside the spacing limit."""
+    horizontal = direction == "H"
+    end, start = ("right", "left") if horizontal else ("back", "front")
+    neighbor = finfet.lgg.get_right_neighbor if horizontal else finfet.lgg.get_back_neighbor
+    axis = 2 if horizontal else 1
+    for layer, idx in finfet.lgg.layer_to_idx.items():
+        if idx == 0 or finfet.lgg.layer_to_direction[layer] != direction:
+            continue
+        for row in finfet.lgg.rows_in_layer(layer):
+            for col in finfet.lgg.cols_in_layer(layer):
+                u = (idx, row, col)
+                v = neighbor(u)
+                while v is not None and v[axis] - u[axis] < eol_params[layer]:
+                    # Other candidate starts need not conflict with each other.
+                    finfet.opt.AddAtMostOne([
+                        finfet.geometric_vars[u][end],
+                        finfet.geometric_vars[v][start],
+                    ])
+                    v = neighbor(v)
 
-    Args:
-        finfet_instance: The FinFET instance containing the opt, lgg, and geometric_vars
-        eol_params: Dictionary mapping layer names to EOL distance parameters
-    """
-    DEBUG_EOL = False
-    finfet_instance.opt.log_comment(f"Enforcing EOL design rule checking for horizontal layers ...")
-    # Horizontal layers
-    for layer, idx in finfet_instance.lgg.layer_to_idx.items():
-        if idx == 0:  # NOTE: no design rule checking for the first layer # BUG this is dangerous
-            continue
-        if finfet_instance.lgg.layer_to_direction[layer] != "H":
-            continue
-        for row in finfet_instance.lgg.rows_in_layer(layer):
-            for col in finfet_instance.lgg.cols_in_layer(layer):
-                # ^ --- 8.1) From right to left
-                u = (idx, row, col)
-                gvr_u = finfet_instance.geometric_vars[u]["right"]
-                # iterate util the given parameter
-                eol_dist = eol_params[layer]
-                walked_dist = 0
-                eol_list = []
-                eol_list.append(gvr_u)
-                curr_u = u
-                absl_logging.info(f"Node: {u} EOL dist: {eol_dist}") if DEBUG_EOL else None
-                while walked_dist < eol_dist:
-                    # check if the right neighbor exists
-                    u_r = finfet_instance.lgg.get_right_neighbor(curr_u)
-                    if u_r is None:
-                        break
-                    gvl_u_r = finfet_instance.geometric_vars[u_r]["left"]
-                    # add the constraints
-                    eol_list.append(gvl_u_r)
-                    # extract current col
-                    curr_col = u_r[2]
-                    walked_dist = abs(curr_col - col)
-                    if walked_dist >= eol_dist:
-                        # if the distance is greater or equal to the eol distance, then we need to break
-                        break
-                    absl_logging.info(f"\t EOL Right-to-Left Banning {gvl_u_r} EOL, walked_dist: {walked_dist}") if DEBUG_EOL else None
-                    # update the current node
-                    curr_u = u_r
-                # add the eol constraints
-                if len(eol_list) > 1:
-                    # if the list is empty, then there is no need to add the constraints
-                    finfet_instance.opt.AddAtMostOne(eol_list)
-                # ^ --- 8.2) From left to right
-                u = (idx, row, col)
-                gvl_u = finfet_instance.geometric_vars[u]["left"]
-                # iterate util the given parameter
-                eol_dist = eol_params[layer]
-                walked_dist = 0
-                eol_list = []
-                eol_list.append(gvl_u)
-                curr_u = u 
-                while walked_dist < eol_dist:
-                    # check if the left neighbor exists
-                    u_l = finfet_instance.lgg.get_left_neighbor(curr_u)
-                    if u_l is None:
-                        break
-                    gvr_u_l = finfet_instance.geometric_vars[u_l]["right"]
-                    # add the constraints
-                    eol_list.append(gvr_u_l)
-                    # extract current col
-                    curr_col = u_l[2]
-                    walked_dist = abs(curr_col - col)
-                    if walked_dist >= eol_dist:
-                        # if the distance is greater or equal to the eol distance, then we need to break
-                        break
-                    absl_logging.info(f"\t EOL Left-to-Right Banning {gvr_u_l} EOL, walked_dist: {walked_dist}") if DEBUG_EOL else None
-                    # update the current node
-                    curr_u = u_l
-                # add the eol constraints
-                if len(eol_list) > 1:
-                    # if the list is empty, then there is no need to add the constraints
-                    finfet_instance.opt.AddAtMostOne(eol_list)
+
+def eol_rules_in_horizontal_layers(finfet_instance, eol_params):
+    """Enforce center-to-center end-of-line spacing on horizontal layers."""
+    finfet_instance.opt.log_comment("Enforcing horizontal EOL spacing ...")
+    _eol_rules(finfet_instance, eol_params, "H")
 
 
 def eol_rules_in_vertical_layers(finfet_instance, eol_params):
-    """
-    Enforce EOL (End-of-Line) design rule checking for vertical layers.
-
-    Args:
-        finfet_instance: The FinFET instance containing the opt, lgg, and geometric_vars
-        eol_params: Dictionary mapping layer names to EOL distance parameters
-    """
-    DEBUG_EOL = False
-    finfet_instance.opt.log_comment(f"Enforcing EOL design rule checking for vertical layers ...")
-    # Vertical layers
-    for layer, idx in finfet_instance.lgg.layer_to_idx.items():
-        if idx == 0:  # NOTE: no design rule checking for the first layer # BUG this is dangerous
-            continue
-        if finfet_instance.lgg.layer_to_direction[layer] != "V":
-            continue
-        for row in finfet_instance.lgg.rows_in_layer(layer):
-            for col in finfet_instance.lgg.cols_in_layer(layer):
-                # ^ --- 8.3) From front to back
-                u = (idx, row, col)
-                gvb_u = finfet_instance.geometric_vars[u]["back"]
-                # iterate util the given parameter
-                eol_dist = eol_params[layer]
-                walked_dist = 0
-                eol_list = []
-                eol_list.append(gvb_u)
-                curr_u = u
-                absl_logging.info(f"Node: {u} EOL dist: {eol_dist}") if DEBUG_EOL else None
-                while walked_dist < eol_dist:
-                    # check if the back neighbor exists
-                    u_b = finfet_instance.lgg.get_back_neighbor(curr_u)
-                    if u_b is None:
-                        break
-                    gvf_u_b = finfet_instance.geometric_vars[u_b]["front"]
-                    # extract current col
-                    curr_row = u_b[1]
-                    walked_dist = abs(curr_row - row)
-                    if walked_dist >= eol_dist:
-                        # if the distance is greater or equal to the eol distance, then we need to break
-                        break
-                    # add the constraints
-                    eol_list.append(gvf_u_b)
-                    absl_logging.info(f"\t EOL Front-to-Back Banning {gvf_u_b} EOL, walked_dist: {walked_dist}") if DEBUG_EOL else None
-                    # update the current node
-                    curr_u = u_b
-                # add the eol constraints
-                if len(eol_list) > 1:
-                    # if the list is empty, then there is no need to add the constraints
-                    finfet_instance.opt.AddAtMostOne(eol_list)
-                # ^ --- 8.4) From back to front
-                u = (idx, row, col)
-                absl_logging.info(f"Node: {u} EOL dist: {eol_dist}") if DEBUG_EOL else None
-                gvf_u = finfet_instance.geometric_vars[u]["front"]
-                # iterate util the given parameter
-                eol_dist = eol_params[layer]
-                walked_dist = 0
-                eol_list = []
-                eol_list.append(gvf_u)
-                curr_u = u
-                while walked_dist < eol_dist:
-                    # check if the front neighbor exists
-                    u_f = finfet_instance.lgg.get_front_neighbor(curr_u)
-                    if u_f is None:
-                        break
-                    gvb_u_f = finfet_instance.geometric_vars[u_f]["back"]
-                    # extract current row
-                    curr_row = u_f[1]
-                    walked_dist = abs(curr_row - row)
-                    if walked_dist >= eol_dist:
-                        # if the distance is greater or equal to the eol distance, then we need to break
-                        break
-                    # add the constraints
-                    eol_list.append(gvb_u_f)
-                    absl_logging.info(f"\t EOL Back-to-Front Banning {gvb_u_f} EOL, walked_dist: {walked_dist}") if DEBUG_EOL else None
-                    # update the current node
-                    curr_u = u_f
-                # add the eol constraints
-                if len(eol_list) > 1:
-                    # if the list is empty, then there is no need to add the constraints
-                    finfet_instance.opt.AddAtMostOne(eol_list)
+    """Enforce center-to-center end-of-line spacing on vertical layers."""
+    finfet_instance.opt.log_comment("Enforcing vertical EOL spacing ...")
+    _eol_rules(finfet_instance, eol_params, "V")
 
 
 def mar_rules_in_horizontal_layers(finfet_instance, mar_params, supervia_params):
